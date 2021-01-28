@@ -29,7 +29,7 @@
                 <div class="nav-item has-sub">
                     <a href="#"><i class="ik ik-edit"></i><span>Forms</span></a>
                     <div class="submenu-content">
-                        <a href="../form-components.html" class="menu-item">Components</a>
+                        <a href="../form-components.html" class="menu-item">Komponen</a>
                         <a href="../form-addon.html" class="menu-item">Add-On</a>
                         <a href="../form-advance.html" class="menu-item">Advance</a>
                     </div>
