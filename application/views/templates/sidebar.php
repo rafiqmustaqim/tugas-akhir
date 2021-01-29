@@ -25,7 +25,7 @@
                 </div>
 
 
-                <div class="nav-lavel">Forms</div>
+                <div class="nav-lavel">Penempatan</div>
                 <div class="nav-item has-sub">
                     <a href="#"><i class="ik ik-edit"></i><span>Forms</span></a>
                     <div class="submenu-content">
