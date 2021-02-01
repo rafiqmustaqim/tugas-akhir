@@ -29,7 +29,7 @@
                 <div class="nav-item has-sub">
                     <a href="#"><i class="ik ik-edit"></i><span>Forms</span></a>
                     <div class="submenu-content">
-                        <a href="../form-components.html" class="menu-item">Components</a>
+                        <a href="../form-components.html" class="menu-item">User</a>
                         <a href="../form-addon.html" class="menu-item">Add-On</a>
                         <a href="../form-advance.html" class="menu-item">Advance</a>
                     </div>
@@ -38,10 +38,10 @@
 
 
                 <div class="nav-item has-sub">
-                    <a href="#"><i class="ik ik-file-text"></i><span>Other</span></a>
+                    <a href="#"><i class="ik ik-file-text"></i><span>Setting</span></a>
                     <div class="submenu-content">
-                        <a href="../profile.html" class="menu-item">Profile</a>
-                        <a href="../invoice.html" class="menu-item">Invoice</a>
+                        <a href="<?php  echo base_url('Admin/getUser') ?>" class="menu-item">User</a>
+                        <a href="" class="menu-item">Profil</a>
                     </div>
                 </div>
 

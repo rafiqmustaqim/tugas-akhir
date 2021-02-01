@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/theme.min.css">
     <script src="<?php echo base_url() ?>assets/src/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
         <!--[if lt IE 8]>
