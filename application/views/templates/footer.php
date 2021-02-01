@@ -1,28 +1,73 @@
-      
-<footer class="footer">
-    <div class="w-100 clearfix">
-        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2018 ThemeKit v2.0. All Rights Reserved.</span>
-        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">Lavalite</a></span>
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
     </div>
-</footer>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>window.jQuery || document.write('<script src="<?php echo base_url() ?>assets/src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-<script src="<?php echo base_url() ?>assets/plugins/popper.js/dist/umd/popper.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/screenfull/dist/screenfull.js"></script>
-<script src="<?php echo base_url() ?>assets/dist/js/theme.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/datatables.js"></script>
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='https://www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-</script>
+</div>
+</div>
+
+<!-- jQuery -->
+<script src="<?php echo base_url('assets/') ?>vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo base_url('assets/') ?>vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url('assets/') ?>vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="<?php echo base_url('assets/') ?>vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="<?php echo base_url('assets/') ?>vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- jQuery Sparklines -->
+<script src="<?php echo base_url('assets/') ?>vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- morris.js -->
+<script src="<?php echo base_url('assets/') ?>vendors/raphael/raphael.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/morris.js/morris.min.js"></script>
+<!-- gauge.js -->
+<script src="<?php echo base_url('assets/') ?>vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="<?php echo base_url('assets/') ?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- Skycons -->
+<script src="<?php echo base_url('assets/') ?>vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="<?php echo base_url('assets/') ?>vendors/Flot/jquery.flot.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/Flot/jquery.flot.pie.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/Flot/jquery.flot.time.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/Flot/jquery.flot.stack.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="<?php echo base_url('assets/') ?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="<?php echo base_url('assets/') ?>vendors/DateJS/build/date.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="<?php echo base_url('assets/') ?>vendors/moment/min/moment.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="<?php echo base_url('assets/') ?>build/js/custom.min.js"></script>
+
+<!-- Datatables -->
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/jszip/dist/jszip.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="<?php echo base_url('assets/') ?>vendors/pdfmake/build/vfs_fonts.js"></script>
+
+
 </body>
 </html>
