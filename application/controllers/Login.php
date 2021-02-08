@@ -26,7 +26,7 @@ class Login extends CI_Controller{
 				'Logged_in' => TRUE
 			);
 			$this->session->set_userdata($sessdata);
-			if($level === 'ADM'){
+			if($level === 'ADM' OR $level === 'KABIRO' OR $level === 'STAF'){
 				redirect('admin/dashboard');
 			}
 			

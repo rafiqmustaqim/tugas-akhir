@@ -41,8 +41,8 @@
                                 <a href="<?php echo base_url() ?>"><img src="<?php echo base_url('assets/login/') ?>img/lp3i/logo4.png" alt="Logo LP3I" width="150px"  ></a>
                             </div>
                             <br>
-                            <h3 align="center">Selamat datang di <br> Sistem Informasi Penempatan Kerja <br>
-                            Mahasiswa LP3I Kampus Depok</h3>
+                            <h3 align="center">Sistem Informasi Penempatan Kerja
+                            Mahasiswa <br> Politeknik LP3I Jakarta <br> Kampus Depok</h3>
                             <?php if( $this->session->flashdata('msg') ) : ?>
                             <div class="row mt-3">
                                 <div class="col-md-12 col-lg-12">

@@ -1,239 +1,130 @@
-          <body class="nav-md">
-            <div class="container body">
-              <div class="main_container">
-                <div class="col-md-3 left_col">
-                  <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                      <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
-                    </div>
+<?php 
 
-                    <div class="clearfix"></div>
+$level = $this->session->userdata('level'); 
+$segment1 = $this->uri->segment('1');
+$segment2 = $this->uri->segment('2');
+$segment3 = $this->uri->segment('3');
 
-                    <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                      <div class="profile_pic">
-                        <img src="<?php echo base_url('assets/') ?>images/img.jpg" alt="..." class="img-circle profile_img">
-                      </div>
-                      <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2>John Doe</h2>
-                      </div>
-                    </div>
-                    <!-- /menu profile quick info -->
 
-                    <br />
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                      <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                          <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="index.html">Dashboard</a></li>
-                              <li><a href="index2.html">Dashboard2</a></li>
-                              <li><a href="index3.html">Dashboard3</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="form.html">General Form</a></li>
-                              <li><a href="form_advanced.html">Advanced Components</a></li>
-                              <li><a href="form_validation.html">Form Validation</a></li>
-                              <li><a href="form_wizards.html">Form Wizard</a></li>
-                              <li><a href="form_upload.html">Form Upload</a></li>
-                              <li><a href="form_buttons.html">Form Buttons</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="general_elements.html">General Elements</a></li>
-                              <li><a href="media_gallery.html">Media Gallery</a></li>
-                              <li><a href="typography.html">Typography</a></li>
-                              <li><a href="icons.html">Icons</a></li>
-                              <li><a href="glyphicons.html">Glyphicons</a></li>
-                              <li><a href="widgets.html">Widgets</a></li>
-                              <li><a href="invoice.html">Invoice</a></li>
-                              <li><a href="inbox.html">Inbox</a></li>
-                              <li><a href="calendar.html">Calendar</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="tables.html">Tables</a></li>
-                              <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="chartjs.html">Chart JS</a></li>
-                              <li><a href="chartjs2.html">Chart JS2</a></li>
-                              <li><a href="morisjs.html">Moris JS</a></li>
-                              <li><a href="echarts.html">ECharts</a></li>
-                              <li><a href="other_charts.html">Other Charts</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                              <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="menu_section">
-                        <h3>Live On</h3>
-                        <ul class="nav side-menu">
-                          <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="e_commerce.html">E-commerce</a></li>
-                              <li><a href="projects.html">Projects</a></li>
-                              <li><a href="project_detail.html">Project Detail</a></li>
-                              <li><a href="contacts.html">Contacts</a></li>
-                              <li><a href="profile.html">Profile</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="page_403.html">403 Error</a></li>
-                              <li><a href="page_404.html">404 Error</a></li>
-                              <li><a href="page_500.html">500 Error</a></li>
-                              <li><a href="plain_page.html">Plain Page</a></li>
-                              <li><a href="login.html">Login Page</a></li>
-                              <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                            </ul>
-                          </li>
-                          <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                              <li><a href="#level1_1">Level One</a>
-                                <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu">
-                                    <li class="sub_menu"><a href="level2.html">Level Two</a>
-                                    </li>
-                                    <li><a href="#level2_1">Level Two</a>
-                                    </li>
-                                    <li><a href="#level2_2">Level Two</a>
-                                    </li>
-                                  </ul>
-                                </li>
-                                <li><a href="#level1_2">Level One</a>
-                                </li>
-                              </ul>
-                            </li>                  
-                            <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
-                          </ul>
-                        </div>
+?>
+<!-- Sidebar -->
+<div class="sidebar sidebar-style-2">
 
-                      </div>
-                      <!-- /sidebar menu -->
+  <div class="sidebar-wrapper scrollbar scrollbar-inner">
+    <div class="sidebar-content">
+      <div class="user">
+        <div class="avatar-sm float-left mr-2">
+          <img src="<?php echo base_url() ?>assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+        </div>
+        <div class="info">
+          <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+            <span>
+              <?php  echo $this->session->userdata('nama_lengkap'); ?>
+              <span class="user-level"><?php if($level === 'ADM') { echo "Super Admin";}elseif($level === 'STAF'){ echo "Staf"; } elseif($level === 'KABIRO') { echo "Kepala Biro"; } ?></span>
+              <span class="caret"></span>
+            </span>
+          </a>
+          <div class="clearfix"></div>
 
-                      <!-- /menu footer buttons -->
-                      <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                          <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                          <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                      </div>
-                      <!-- /menu footer buttons -->
-                    </div>
-                  </div>
+          <div class="collapse in" id="collapseExample">
+            <ul class="nav">
+              <li>
+                <a href="#profile">
+                  <span class="link-collapse">My Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href="#edit">
+                  <span class="link-collapse">Edit Profile</span>
+                </a>
+              </li>
 
-                  <!-- top navigation -->
-                  <div class="top_nav">
-                    <div class="nav_menu">
-                      <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                      </div>
-                      <nav class="nav navbar-nav">
-                        <ul class=" navbar-right">
-                          <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                              <img src="<?php echo base_url('assets/') ?>images/img.jpg" alt="">John Doe
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                              <a class="dropdown-item"  href="javascript:;">
-                                <span class="badge bg-red pull-right">50%</span>
-                                <span>Settings</span>
-                              </a>
-                              <a class="dropdown-item"  href="javascript:;">Help</a>
-                              <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                            </div>
-                          </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="nav nav-primary">
+        <li class="nav-item <?php if($segment2 === 'dashboard'){ echo 'active' ; } ?>" >
+          <a  href="<?php echo base_url('admin/dashboard') ?>" class="collapsed">
+            <i class="fas fa-home"></i>
+            <p>Dashboard</p>
+          </a>             
+        </li>
+        <div class="dropdown-divider"></div>
+        <!--  menu penempatan kerja -->
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#sidebarLayouts">
+            <i class="fas fa-briefcase"></i>
+            <p>Penempatan Kerja</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="sidebarLayouts">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="../sidebar-style-1.html">
+                  <span class="sub-item">Proses Penempatan</span>
+                </a>
+              </li>
+              <li>
+                <a href="../overlay-sidebar.html">
+                  <span class="sub-item">Progres Penempatan</span>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </li>
 
-                          <li role="presentation" class="nav-item dropdown open">
-                            <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
-                              <i class="fa fa-envelope-o"></i>
-                              <span class="badge bg-green">6</span>
-                            </a>
-                            <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                              <li class="nav-item">
-                                <a class="dropdown-item">
-                                  <span class="image"><img src="<?php echo base_url('assets/') ?>images/img.jpg" alt="Profile Image" /></span>
-                                  <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                  </span>
-                                  <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                  </span>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="dropdown-item">
-                                  <span class="image"><img src="<?php echo base_url('assets/') ?>images/img.jpg" alt="Profile Image" /></span>
-                                  <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                  </span>
-                                  <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                  </span>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="dropdown-item">
-                                  <span class="image"><img src="<?php echo base_url('assets/') ?>images/img.jpg" alt="Profile Image" /></span>
-                                  <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                  </span>
-                                  <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                  </span>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="dropdown-item">
-                                  <span class="image"><img src="<?php echo base_url('assets/') ?>images/img.jpg" alt="Profile Image" /></span>
-                                  <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                  </span>
-                                  <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                  </span>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <div class="text-center">
-                                  <a class="dropdown-item">
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                  </a>
-                                </div>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
-        <!-- /top navigation -->
+        <li class="nav-item <?php if($segment1 === 'Mahasiswa'){ echo 'active submenu' ; } ?>">
+          <a data-toggle="collapse" href="#forms">
+            <i class="fas fa-user-graduate"></i>
+            <p>Mahasiswa</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse <?php if($segment1 === 'Mahasiswa'){ echo 'show' ; } ?>" id="forms">
+            <ul class="nav nav-collapse">
+              <li class="<?php if($segment1 === 'Mahasiswa'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Mahasiswa ') ?>">
+                  <span class="sub-item">Data Mahasiswa</span>
+                </a>
+              </li>
+              <li>
+                <a href="../forms/forms.html">
+                  <span class="sub-item">Minat</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="<?php echo base_url('Perusahaan') ?>">
+            <i class="fa fa-building"></i>
+            <p>Perusahaan </p>
+            <span class="badge badge-success">4</span>
+          </a>
+        </li>
+
+        <li class="nav-section">
+          <span class="sidebar-mini-icon">
+            <i class="fa fa-ellipsis-h"></i>
+          </span>
+          <h4 class="text-section">Setting</h4>
+        </li>
+        <li class="nav-item <?php if($segment2 === 'getUser'){ echo 'active' ; } ?>">
+          <a href="<?php echo base_url('admin/getUser') ?>">
+            <i class="fas fa-user-cog"></i>
+            <p>User Management</p>
+          </a>
+        </li>
+         <li class="nav-item <?php if($this->uri->segment('2') === 'getProdi'){ echo 'active' ; } ?>">
+          <a href="<?php echo base_url('admin/getProdi') ?>">
+            <i class="fas fa-book-open"></i>
+            <p>Program Studi</p>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
