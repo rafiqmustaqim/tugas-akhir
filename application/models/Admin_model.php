@@ -63,11 +63,10 @@ class Admin_model extends CI_Model{
 	}
 
 	public function edit_prodi($id){
-		$id = $this->input->post('id_prodi');
+		$id = $this->input->post('old_id');
 		$data = array(
+			'id_prodi' => $this->input->post('id_prodi'),
 			'nama_prodi' => $this->input->post('nama_prodi')
-
-
 		);
 		$this->db->where('id_prodi',$id);
 		$this->db->update('prodi',$data);

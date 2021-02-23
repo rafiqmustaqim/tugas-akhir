@@ -66,7 +66,7 @@
 								<div class="col-md-4 col-lg-4">
 									<div class="form-group">
 										<label>IPK</label>
-										<input type="text" name="ipk" class="form-control" placeholder="Contoh : 3,59 ">
+										<input type="text" name="ipk" class="form-control" placeholder="Contoh : 3.80 ">
 									</div>
 								</div>
 								<div class="col-md-4 col-lg-4">
@@ -81,7 +81,7 @@
 										<input type="text" name="tahun_akademik" class="form-control" placeholder="Contoh : 2018/2019">
 									</div>
 								</div>
-								<div class="col-lg-12 col-md-12">
+								<div class="col-lg-6 col-md-6">
 									<div class="form-group">
 										<label>ALamat</label>
 										<textarea class="form-control" name="alamat"></textarea>
@@ -89,21 +89,33 @@
 								</div>
 								<div class="col-lg-6 col-md-6">
 									<div class="form-group">
+										<label>Minat</label>
+										<textarea class="form-control" name="minat"></textarea>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4">
+									<div class="form-group">
 										<label>No. Telpon</label>
 										<input type="text" name="telepon" class="form-control">
 									</div>
 								</div>
-								<div class="col-lg-6 col-md-6">
+								<div class="col-lg-4 col-md-4">
 									<div class="form-group">
 										<label>No. Telpon Orang Tua</label>
-										<input class="form-control" name="telepon_orangtua">
+										<input type="text" class="form-control" name="telepon_orangtua">
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4">
+									<div class="form-group">
+										<label>Foto</label>
+										<input type="file" class="form-control" name="foto">
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="card-action">
 							<button type="Submit" class="btn btn-primary">Simpan</button>
-							<a href="<?php echo base_url('Mahasiswa') ?>" class="btn btn-danger">Batal</a>
+							<a href="<?php echo base_url('Mahasiswa/getMahasiswa') ?>" class="btn btn-danger">Batal</a>
 						</div>
 					</form>
 				</div>

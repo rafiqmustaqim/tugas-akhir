@@ -19,11 +19,24 @@
         });
     </script>
 
+    <!-- Memanggil file .js untuk proses autocomplete -->
+<!--     <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery-1.8.2.min.js'></script>
+ -->    <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery.autocomplete.js'></script>
+
+    <!-- Memanggil file .css untuk style saat data dicari dalam filed -->
+    <link href='<?php echo base_url();?>assets/js/jquery.autocomplete.css' rel='stylesheet' />
+
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/atlantis.min.css">
+
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/demo.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/jquery-ui.css">
+
+ <!-- Memanggil file .css untuk style saat data dicari dalam filed -->
+
 </head>
 <body>
     <div class="wrapper">
@@ -54,7 +67,7 @@
 
                 <div class="container-fluid">
                     <div class="collapse" id="search-nav">
-                        <form class="navbar-left navbar-form nav-search mr-md-3">
+                        <!-- <form class="navbar-left navbar-form nav-search mr-md-3">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-search pr-1">
@@ -63,7 +76,9 @@
                                 </div>
                                 <input type="text" placeholder="Search ..." class="form-control">
                             </div>
-                        </form>
+                        </form> -->
+
+                        <h4 style="color:white;"> <i class="fa fa-briefcase"></i> Sistem Informasi Penempatan Kerja Mahasiswa</h4>
                     </div>
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item toggle-nav-search hidden-caret">
@@ -71,76 +86,8 @@
                                 <i class="fa fa-search"></i>
                             </a>
                         </li>
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-envelope"></i>
-                            </a>
-                            <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
-                                <li>
-                                    <div class="dropdown-title d-flex justify-content-between align-items-center">
-                                        Messages                                    
-                                        <a href="#" class="small">Mark all as read</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="message-notif-scroll scrollbar-outer">
-                                        <div class="notif-center">
-                                            <a href="#">
-                                                <div class="notif-img"> 
-                                                    <img src="<?php echo base_url() ?>assets/img/jm_denis.jpg" alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Jimmy Denis</span>
-                                                    <span class="block">
-                                                        How are you ?
-                                                    </span>
-                                                    <span class="time">5 minutes ago</span> 
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notif-img"> 
-                                                    <img src="<?php echo base_url() ?>assets/img/chadengle.jpg" alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Chad</span>
-                                                    <span class="block">
-                                                        Ok, Thanks !
-                                                    </span>
-                                                    <span class="time">12 minutes ago</span> 
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notif-img"> 
-                                                    <img src="<?php echo base_url() ?>assets/img/mlane.jpg" alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Jhon Doe</span>
-                                                    <span class="block">
-                                                        Ready for the meeting today...
-                                                    </span>
-                                                    <span class="time">12 minutes ago</span> 
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notif-img"> 
-                                                    <img src="<?php echo base_url() ?>assets/img/talha.jpg" alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Talha</span>
-                                                    <span class="block">
-                                                        Hi, Apa Kabar ?
-                                                    </span>
-                                                    <span class="time">17 minutes ago</span> 
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
-                                </li>
-                            </ul>
-                        </li>
+                       
+                           
                         <li class="nav-item dropdown hidden-caret">
                             <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
@@ -209,42 +156,26 @@
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
                                         <div class="row m-0">
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-file-1"></i>
-                                                    <span class="text">Generated Report</span>
-                                                </div>
-                                            </a>
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-database"></i>
-                                                    <span class="text">Create New Database</span>
-                                                </div>
-                                            </a>
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-pen"></i>
-                                                    <span class="text">Create New Post</span>
-                                                </div>
-                                            </a>
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-interface-1"></i>
-                                                    <span class="text">Create New Task</span>
-                                                </div>
-                                            </a>
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-list"></i>
-                                                    <span class="text">Completed Tasks</span>
-                                                </div>
-                                            </a>
-                                            <a class="col-6 col-md-4 p-0" href="#">
+                                            <a class="col-6 col-md-4 p-0" href="<?php echo base_url('Mahasiswa/formTambah') ?>">
                                                 <div class="quick-actions-item">
                                                     <i class="flaticon-file"></i>
-                                                    <span class="text">Create New Invoice</span>
+                                                    <span class="text">Form Mahasiswa</span>
                                                 </div>
                                             </a>
+                                            <a class="col-6 col-md-4 p-0" href="<?php echo base_url('Perusahaan/formTambah') ?>">
+                                                <div class="quick-actions-item">
+                                                    <i class="flaticon-file"></i>
+                                                    <span class="text">Form Perusahaan</span>
+                                                </div>
+                                            </a>
+                                            <a class="col-6 col-md-4 p-0" href="<?php echo base_url('Penempatan/formProsesPenempatan') ?>">
+                                                <div class="quick-actions-item">
+                                                    <i class="flaticon-file"></i>
+                                                    <span class="text">Form  Penempatan</span>
+                                                </div>
+                                            </a>
+                                        
+                                           
                                         </div>
                                     </div>
                                 </div>

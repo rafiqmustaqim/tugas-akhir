@@ -12,7 +12,7 @@ Class Mahasiswa extends CI_Controller{
 
 
 
-	public function index(){
+	public function getMahasiswa(){
 		$data['title'] = "SIPKM | Data Mahasiswa ";
 		$level = $this->session->userdata('level');
 		$data['data'] = $this->Mahasiswa_model->get_mahasiswa();
@@ -27,10 +27,26 @@ Class Mahasiswa extends CI_Controller{
 		}
 	}
 
+		public function minatMahasiswa(){
+		$data['title'] = "SIPKM | Data Mahasiswa ";
+		$level = $this->session->userdata('level');
+		$data['data'] = $this->Mahasiswa_model->get_mahasiswa();
+		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
+			$this->load->view('templates/header',$data);
+			$this->load->view('templates/sidebar');
+			$this->load->view('admin/mahasiswa/v_minat_mahasiswa',$data);
+			$this->load->view('templates/footer');
+		}else{
+			echo "<script> alert('access denied!') </script>";
+			redirect('admin');
+		}
+	}
+
 	public function detail($nim){
 		$data['title'] = "SIPKM | Detail Mahasiswa ";
 		$level = $this->session->userdata('level');
 		$data['data'] = $this->Mahasiswa_model->get_mahasiswa_by_nim($nim);
+		$data['proses_penempatan'] = $this->Mahasiswa_model->detail_penempatan($nim);
 		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
@@ -76,7 +92,7 @@ Class Mahasiswa extends CI_Controller{
 		if($this->session->userdata('level') === "ADM" || $this->session->userdata('level') === 'KABIRO' || $this->session->userdata('level') === 'STAF'){
 			$this->Mahasiswa_model->add_mahasiswa();
 			$this->session->set_flashdata('msg','ditambahkan!');
-			redirect('Mahasiswa');
+			redirect('Mahasiswa/getMahasiswa');
 		}else{
 			echo "<script> alert('access denied!') </script>";
 			redirect('admin');
@@ -88,7 +104,7 @@ Class Mahasiswa extends CI_Controller{
 			$this->Mahasiswa_model->edit_mahasiswa($nim);
 			$this->session->set_flashdata('msg','diubah!');
 
-			redirect('Mahasiswa');
+			redirect('Mahasiswa/getMahasiswa');
 		}else{
 			echo "<script> alert('access denied!') </script>";
 			redirect('admin');
@@ -100,7 +116,7 @@ Class Mahasiswa extends CI_Controller{
 			$this->Mahasiswa_model->delete_mahasiswa($nim);
 			$this->session->set_flashdata('msg','dihapus!');
 
-			redirect('Mahasiswa');
+			redirect('Mahasiswa/getMahasiswa');
 		}else{
 			echo "<script> alert('access denied!') </script>";
 			redirect('admin');

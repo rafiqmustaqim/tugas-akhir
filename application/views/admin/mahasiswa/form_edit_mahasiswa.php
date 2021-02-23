@@ -37,7 +37,8 @@
 									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>NIM</label>
-											<input type="text" value="<?= $mhs->nim ?>" name="nim" class="form-control"  placeholder="Masukan NIM">
+											<input type="hidden" value="<?= $mhs->nim ?>" name="nim" class="form-control"  placeholder="Masukan NIM">
+											<input type="text" value="<?= $mhs->nim ?>" name="nim_update" class="form-control"  placeholder="Masukan NIM">
 
 										</div>
 										<div class="form-group">
@@ -49,8 +50,8 @@
 													?>
 													<option value="<?= $d->id_prodi ?>" <?php if($mhs->id_prodi == $d->id_prodi){ echo "selected";}  ?> >
 														<?= $d->nama_prodi ?>
-															
-														</option>
+
+													</option>
 												<?php endforeach; ?>
 											</select>
 										</div>
@@ -71,7 +72,7 @@
 									<div class="col-md-4 col-lg-4">
 										<div class="form-group">
 											<label>IPK</label>
-											<input type="text" name="ipk" value="<?= $mhs->ipk ?>"  class="form-control" placeholder="Contoh : 3,59 ">
+											<input type="text" name="ipk" value="<?= $mhs->ipk ?>"  class="form-control" placeholder="Contoh : 3.80 ">
 										</div>
 									</div>
 									<div class="col-md-4 col-lg-4">
@@ -86,10 +87,16 @@
 											<input type="text" value="<?= $mhs->tahun_akademik ?>" name="tahun_akademik" class="form-control" placeholder="Contoh : 2018/2019">
 										</div>
 									</div>
-									<div class="col-lg-12 col-md-12">
+									<div class="col-lg-6 col-md-6">
 										<div class="form-group">
 											<label>ALamat</label>
 											<textarea class="form-control" name="alamat"><?= $mhs->alamat ?></textarea>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-group">
+											<label>Minat</label>
+											<textarea class="form-control" name="minat"><?= $mhs->minat ?></textarea>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6">
@@ -104,11 +111,28 @@
 											<input class="form-control" value="<?= $mhs->telepon_orangtua ?>" name="telepon_orangtua">
 										</div>
 									</div>
+
+									<div class="col-lg-3 col-md-3" style="padding-top: 20px;padding-left:25px;">
+										<?php if($mhs->foto != null) { ?>
+											<img style="height: auto;width: 100%;" class="card-img-top" src="<?php echo base_url('assets/upload/mahasiswa/') ?><?= $mhs->foto ?>"  alt="Card image cap">
+											<small align="center"><?= $mhs->foto ?></small>
+										<?php }else{ ?>
+											<img style="height: auto;width: 100%;" class="card-img-top" src="<?php echo base_url('assets/img/default.jpg') ?>"  alt="Card image cap">
+											<small>defaul.jpg</small>
+										<?php } ?>
+									</div>
+									<div class="col-lg-9 col-md-9">
+										<div class="form-group">
+											<label>Foto</label>
+											<input type="hidden" class="form-control" value="<?= $mhs->foto ?>" name="old_image">
+											<input type="file" class="form-control" name="foto">
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="card-action">
 								<button type="Submit" class="btn btn-primary">Simpan</button>
-								<a href="<?php echo base_url('Mahasiswa') ?>" class="btn btn-danger">Batal</a>
+								<a href="<?php echo base_url('Mahasiswa/getMahasiswa') ?>" class="btn btn-danger">Batal</a>
 							</div>
 						</form>
 					</div>

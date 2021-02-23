@@ -51,58 +51,89 @@ $segment3 = $this->uri->segment('3');
           </a>             
         </li>
         <div class="dropdown-divider"></div>
+
         <!--  menu penempatan kerja -->
-        <li class="nav-item">
-          <a data-toggle="collapse" href="#sidebarLayouts">
+        <li class="nav-item <?php if($segment1 === 'Penempatan'){ echo 'active submenu' ; } ?>">
+          <a data-toggle="collapse" href="#penempatan">
             <i class="fas fa-briefcase"></i>
             <p>Penempatan Kerja</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse" id="sidebarLayouts">
+          <div class="collapse <?php if($segment1 === 'Penempatan'){ echo 'show' ; } ?>" id="penempatan">
             <ul class="nav nav-collapse">
-              <li>
-                <a href="../sidebar-style-1.html">
+              <li class=" <?php if($segment2 === 'prosesPenempatan'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Penempatan/prosesPenempatan') ?>">
                   <span class="sub-item">Proses Penempatan</span>
                 </a>
               </li>
-              <li>
-                <a href="../overlay-sidebar.html">
+              <li class=" <?php if($segment2 === 'progresPenempatan'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Penempatan/progresPenempatan') ?>">
                   <span class="sub-item">Progres Penempatan</span>
                 </a>
               </li>
-              
             </ul>
           </div>
         </li>
 
+        <!-- menu mahasiswa -->
         <li class="nav-item <?php if($segment1 === 'Mahasiswa'){ echo 'active submenu' ; } ?>">
-          <a data-toggle="collapse" href="#forms">
+          <a data-toggle="collapse" href="#mahasiswa">
             <i class="fas fa-user-graduate"></i>
             <p>Mahasiswa</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse <?php if($segment1 === 'Mahasiswa'){ echo 'show' ; } ?>" id="forms">
+          <div class="collapse <?php if($segment1 === 'Mahasiswa'){ echo 'show' ; } ?>" id="mahasiswa">
             <ul class="nav nav-collapse">
-              <li class="<?php if($segment1 === 'Mahasiswa'){ echo 'active' ; } ?>">
-                <a href="<?php echo base_url('Mahasiswa ') ?>">
+              <li class="<?php if($segment2 === 'formTambah'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Mahasiswa/formTambah') ?>">
+                  <span class="sub-item">Form Mahasiswa</span>
+                </a>
+              </li>
+              <li class="<?php if($segment2 === 'getMahasiswa'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Mahasiswa/getMahasiswa') ?>">
                   <span class="sub-item">Data Mahasiswa</span>
                 </a>
               </li>
-              <li>
-                <a href="../forms/forms.html">
-                  <span class="sub-item">Minat</span>
+              <li class="<?php if($segment2 === 'minatMahasiswa'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Mahasiswa/minatMahasiswa') ?>">
+                  <span class="sub-item">Minat Mahasiswa</span>
                 </a>
               </li>
             </ul>
           </div>
         </li>
 
-        <li class="nav-item">
-          <a href="<?php echo base_url('Perusahaan') ?>">
-            <i class="fa fa-building"></i>
-            <p>Perusahaan </p>
-            <span class="badge badge-success">4</span>
+        <!-- Data perusahaan -->
+        <li class="nav-item <?php if($segment1 === 'Perusahaan'){ echo 'active submenu' ; } ?>">
+          <a data-toggle="collapse" href="#perusahaan">
+            <i class="fas fa-building"></i>
+            <p>Perusahaan</p>
+            <span class="caret"></span>
           </a>
+          <div class="collapse <?php if($segment1 === 'Perusahaan'){ echo 'show' ; } ?>" id="perusahaan">
+            <ul class="nav nav-collapse">
+              <li class="<?php if($segment2 === 'formTambah'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Perusahaan/formTambah ') ?>">
+                  <span class="sub-item">Form Perusahaan</span>
+                </a>
+              </li>
+              <li class="<?php if($segment2 === 'getPerusahaan'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Perusahaan/getPerusahaan') ?>">
+                  <span class="sub-item">Data Perusahaan</span>
+                </a>
+              </li>
+              <!--               <li class="<?php if($segment2 === 'permintaanPerusahaan'){ echo 'active' ; } ?>"> -->
+<!--                 <a href="<?php echo base_url('Perusahaan/permintaanPerusahaan') ?>">
+                  <span class="sub-item">Permintaan</span>
+                </a>
+              </li>
+              <li class="<?php if($segment2 === 'penawaranPerusahaan'){ echo 'active' ; } ?>">
+                <a href="<?php echo base_url('Perusahaan/penawaranPerusahaan') ?>">
+                  <span class="sub-item">Penawaran</span>
+                </a> -->
+              </li>
+            </ul>
+          </div>
         </li>
 
         <li class="nav-section">
@@ -117,7 +148,7 @@ $segment3 = $this->uri->segment('3');
             <p>User Management</p>
           </a>
         </li>
-         <li class="nav-item <?php if($this->uri->segment('2') === 'getProdi'){ echo 'active' ; } ?>">
+        <li class="nav-item <?php if($this->uri->segment('2') === 'getProdi'){ echo 'active' ; } ?>">
           <a href="<?php echo base_url('admin/getProdi') ?>">
             <i class="fas fa-book-open"></i>
             <p>Program Studi</p>

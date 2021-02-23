@@ -47,7 +47,7 @@
             <div class="card-body">
 
               <div class="table-responsive">
-                <table id="add-row" class="display table table-striped table-hover" >
+                <table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
                   <thead>
                     <tr align="center">
                       <th>No</th>
@@ -61,23 +61,33 @@
                   </thead>
 
                   <tbody>
-                   <?php  $no =1; foreach($data as $u ):  ?>
+                   <?php  $no =1; foreach($data as $d ):  ?>
                    <tr align="center">
                     <td><?php echo $no++; ?></td>
-                    <td><?= $u['nim']; ?></td>
-                    <td><?= $u['nama_mahasiswa']; ?></td>
-                    <td><?= $u['id_prodi']; ?></td>
-                    <td>  <?= $u['tahun_akademik']; ?></td>
-                    <td><span class="badge badge-primary badge-pill">Wajib Kerja</span></td>
+                    <td><?= $d['nim']; ?></td>
+                    <td><?= $d['nama_mahasiswa']; ?></td>
+                    <td><?= $d['id_prodi']; ?></td>
+                    <td>  <?= $d['tahun_akademik']; ?></td>
+                    <td>
+                      <?php if($d['ipk'] >= 3 && $d['toeic'] >= 400) { ?>
+                        <span class="badge badge-success badge-pill">Wajib Kerja</span>
+                      <?php }elseif($d['ipk'] <= 3 && $d['toeic'] >= 350 ){ ?>
+                        <span class="badge badge-warning badge-pill">Dibantu M/K</span>
+                      <?php }elseif($d['ipk'] >= 3 && $d['toeic'] <= 400 ){ ?>
+                        <span class="badge badge-warning badge-pill">Dibantu M/K</span>
+                      <?php }elseif($d['ipk'] <= 3 && $d['toeic'] <= 350 ){ ?>
+                        <span class="badge badge-warning badge-pill">Dibantu M/K</span>
+                      <?php } ?>
+                    </td>
                     <td>
                       <div class="form-button-action">
-                        <a  data-toggle="tooltip" href="<?php echo base_url('Mahasiswa/detail') ?>/<?= $u['nim']; ?>" class="btn btn-link btn-primary" data-original-title="Detail Mahasiswa">
-                          <i class="fa fa-eye"></i>
+                        <a href="<?php  echo base_url('Mahasiswa/detail/') ?><?= $d['nim']; ?>" data-toggle="tooltip" title="Detail Mahasiswa" class="btn btn-link btn-primary btn-lg" data-original-title="Detail Mahasiswa" >
+                          <i class="fa fa-info-circle"></i>
                         </a>
-                        <a href="<?php  echo base_url('Mahasiswa/formEdit/') ?><?= $u['nim']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-lg" data-original-title="Edit" data-target="#modaledit<?= $u['nim']; ?>">
+                        <a href="<?php  echo base_url('Mahasiswa/formEdit/') ?><?= $d['nim']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-lg" data-original-title="Edit" data-target="#modaledit<?= $d['nim']; ?>">
                           <i class="fa fa-edit"></i>
                         </a>
-                        <a  data-toggle="tooltip" href="<?php echo base_url('Mahasiswa/deleteMahasiswa') ?>/<?= $u['nim']; ?>" class="btn btn-link btn-danger" data-original-title="Hapus" onClick="return confirm('Data akan dihapus?')" >
+                        <a  data-toggle="tooltip" href="<?php echo base_url('Mahasiswa/deleteMahasiswa') ?>/<?= $d['nim']; ?>" class="btn btn-link btn-danger" data-original-title="Hapus" onClick="return confirm('Data akan dihapus?')" >
                           <i class="fa fa-times"></i>
                         </a>
                       </div>
@@ -98,4 +108,5 @@
 
 </div>
 </div>
+
 
