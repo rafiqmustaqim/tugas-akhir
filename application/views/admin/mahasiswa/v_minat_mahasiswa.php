@@ -44,16 +44,13 @@
             <div class="card-header">
               <div class="d-flex align-items-center">
                 <h4 class="card-title">Minat Mahasiswa</h4>
-                <a href="<?php echo base_url('Mahasiswa/formtambah') ?>" class="btn btn-primary btn-round ml-auto" >
-                  <i class="fa fa-plus"></i>
-                  Tambah
-                </a>
+               
               </div>
             </div>
             <div class="card-body">
 
               <div class="table-responsive">
-                <table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+                <table id="add-row" class="display table table-hover table-head-bg-primary" >
                   <thead>
                     <tr align="center">
                       <th>No</th>
@@ -70,8 +67,8 @@
                     <td><?php echo $no++; ?></td>
                     <td><?= $d['nim']; ?></td>
                     <td><?= $d['nama_mahasiswa']; ?></td>
-                    <td><?= $d['id_prodi']; ?></td>
-                    <td>  <?= $d['minat']; ?></td>
+                    <td><?= $d['nama_prodi']; ?></td>
+                    <td><?= $d['minat']; ?></td>
 
                   </tr>
                 <?php   endforeach; ?>

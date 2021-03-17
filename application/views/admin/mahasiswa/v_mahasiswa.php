@@ -31,7 +31,6 @@
         </div>
       <?php endif; ?>
 
-
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -46,28 +45,31 @@
             </div>
             <div class="card-body">
 
+
+
               <div class="table-responsive">
-                <table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+                <table id="multi-filter-select" class="display table  table-hover table-head-bg-primary" >
+
                   <thead>
                     <tr align="center">
-                      <th>No</th>
-                      <th>NIM</th>
+                      <th style="width: 10px;">No</th>
+                      <th style="width: 60px;">NIM</th>
                       <th>Nama Mahasiswa</th>
                       <th>Program Studi</th>
                       <th>Tahun Akademik</th>
                       <th>Status</th>
-                      <th style="width: 100px">Action</th>
+                      <th style="width: 80px">Aksi</th>
                     </tr>
                   </thead>
-
+                  
                   <tbody>
                    <?php  $no =1; foreach($data as $d ):  ?>
                    <tr align="center">
                     <td><?php echo $no++; ?></td>
                     <td><?= $d['nim']; ?></td>
                     <td><?= $d['nama_mahasiswa']; ?></td>
-                    <td><?= $d['id_prodi']; ?></td>
-                    <td>  <?= $d['tahun_akademik']; ?></td>
+                    <td><?= $d['nama_prodi']; ?></td>
+                    <td><?= $d['tahun_akademik']; ?></td>
                     <td>
                       <?php if($d['ipk'] >= 3 && $d['toeic'] >= 400) { ?>
                         <span class="badge badge-success badge-pill">Wajib Kerja</span>
@@ -81,13 +83,13 @@
                     </td>
                     <td>
                       <div class="form-button-action">
-                        <a href="<?php  echo base_url('Mahasiswa/detail/') ?><?= $d['nim']; ?>" data-toggle="tooltip" title="Detail Mahasiswa" class="btn btn-link btn-primary btn-lg" data-original-title="Detail Mahasiswa" >
+                        <a href="<?php  echo base_url('Mahasiswa/detail/') ?><?= $d['nim']; ?>" data-toggle="tooltip" title="Detail Mahasiswa" class="btn btn-link btn-primary btn-sm" data-original-title="Detail Mahasiswa" >
                           <i class="fa fa-info-circle"></i>
                         </a>
-                        <a href="<?php  echo base_url('Mahasiswa/formEdit/') ?><?= $d['nim']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-lg" data-original-title="Edit" data-target="#modaledit<?= $d['nim']; ?>">
+                        <a href="<?php  echo base_url('Mahasiswa/formEdit/') ?><?= $d['nim']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm" data-original-title="Edit" data-target="#modaledit<?= $d['nim']; ?>">
                           <i class="fa fa-edit"></i>
                         </a>
-                        <a  data-toggle="tooltip" href="<?php echo base_url('Mahasiswa/deleteMahasiswa') ?>/<?= $d['nim']; ?>" class="btn btn-link btn-danger" data-original-title="Hapus" onClick="return confirm('Data akan dihapus?')" >
+                        <a  data-toggle="tooltip" href="<?php echo base_url('Mahasiswa/deleteMahasiswa') ?>/<?= $d['nim']; ?>" class="btn btn-link btn-danger btn-sm" data-original-title="Hapus" onClick="return confirm('Data akan dihapus?')" >
                           <i class="fa fa-times"></i>
                         </a>
                       </div>
@@ -95,6 +97,16 @@
                   </tr>
                 <?php   endforeach; ?>
               </tbody>
+              <tfoot>
+                    <tr>
+                      <th>No</th>
+                      <th>NIM</th>
+                      <th>Nama Mahasiswa</th>
+                      <th>Program Studi</th>
+                      <th>Tahun Akademik</th>
+                      <!-- <th>Status</th> -->
+                    </tr>
+                  </tfoot>
             </table>
           </div>
         </div>
@@ -103,8 +115,33 @@
   </div>
   <!-- end row -->
 
+  <script src="<?php echo base_url() ?>assets/js/plugin/datatables/datatables.min.js"></script>
 
+  <script type="text/javascript">
+    $('#multi-filter-select').DataTable( {
+      "pageLength": 5,
+      initComplete: function () {
+        this.api().columns().every( function () {
+          var column = this;
+          var select = $('<select class="form-control"><option value=""></option></select>')
+          .appendTo( $(column.footer()).empty() )
+          .on( 'change', function () {
+            var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+              );
 
+            column
+            .search( val ? '^'+val+'$' : '', true, false )
+            .draw();
+          } );
+
+          column.data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+          } );
+        } );
+      }
+    });
+  </script>
 
 </div>
 </div>

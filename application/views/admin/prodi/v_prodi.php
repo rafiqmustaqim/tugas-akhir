@@ -54,7 +54,7 @@
 
 
 							<div class="table-responsive">
-								<table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+								<table id="add-row" class="display table  table-hover table-head-bg-primary" >
 									<thead>
 										<tr>	
 											<th>No</th>

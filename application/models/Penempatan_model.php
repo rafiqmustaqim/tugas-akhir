@@ -6,8 +6,9 @@ class Penempatan_model extends CI_Model{
 
 
 	public function get_proses_penempatan(){
-		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.nim_mahasiswa');
-		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_id_perusahaan');
+		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.fk_nim');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
+		$this->db->order_by('tgl_proses','DESC');
 		return $this->db->get('proses_penempatan')->result_array();
 	}
 
@@ -15,8 +16,8 @@ class Penempatan_model extends CI_Model{
 		// $array = array('id' =>  $id);
 		// return $this->db->get_where('penempatan',$array)->row();
 		$array=array('id_proses'=>$id);
-		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.nim_mahasiswa');
-		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_id_perusahaan');
+		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.fk_nim');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
 		$query = $this->db->get_where('proses_penempatan', $array);
 		$ret = $query->result();
 		return $ret;
@@ -27,12 +28,14 @@ class Penempatan_model extends CI_Model{
 
 	public function add_proses_penempatan(){
 		$data = array(
-			'nim_mahasiswa' => $this->input->post('nim'),
-			'fk_id_perusahaan' => $this->input->post('id_perusahaan'),
+			'fk_nim' => $this->input->post('nim'),
+			'fk_perusahaan' => $this->input->post('id_perusahaan'),
 			'tgl_proses' => $this->input->post('tgl_proses'),
 			'posisi_dilamar' => $this->input->post('posisi_dilamar'),
 			'status' => $this->input->post('status'),
-			'keterangan' => $this->input->post('keterangan')
+			'keterangan' => $this->input->post('keterangan'),
+			'gaji' => $this->input->post('gaji'),
+			'tgl_diterima' => $this->input->post('tgl_diterima')
 			// 'permasalahan' => $this->input->post('permasalahan'),
 			
 		);
@@ -42,14 +45,15 @@ class Penempatan_model extends CI_Model{
 	public function edit_proses_penempatan($id){
 		$id = $this->input->post('id_proses');
 		$data = array(
-			'nim_mahasiswa' => $this->input->post('nim'),
-			'fk_id_perusahaan' => $this->input->post('id_perusahaan'),
+			'fk_nim' => $this->input->post('nim'),
+			'fk_perusahaan' => $this->input->post('id_perusahaan'),
 			'tgl_proses' => $this->input->post('tgl_proses'),
 			'posisi_dilamar' => $this->input->post('posisi_dilamar'),
 			'status' => $this->input->post('status'),
 			'keterangan' => $this->input->post('keterangan'),
-			'permasalahan' => $this->input->post('permasalahan')
-			
+			'permasalahan' => $this->input->post('permasalahan'),
+			'gaji' => $this->input->post('gaji'),
+			'tgl_diterima' => $this->input->post('tgl_diterima')
 		);
 		$this->db->where('id_proses',$id);
 		$this->db->update('proses_penempatan',$data);
@@ -82,16 +86,16 @@ class Penempatan_model extends CI_Model{
 
 // ambil data proses penempatan berdasarkan yang keterima
 	public function get_progres_penempatan(){
-		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.nim_mahasiswa');
-		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_id_perusahaan');
+		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.fk_nim');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
 		$this->db->where('keterangan = "Diterima"');
 		return $this->db->get('proses_penempatan')->result_array();
 	}
 
 // eksport data
-		public function export_progres(){
-		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.nim_mahasiswa');
-		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_id_perusahaan');
+	public function export_progres(){
+		$this->db->join('mahasiswa', 'mahasiswa.nim = proses_penempatan.fk_nim');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
 		$this->db->where('keterangan = "Diterima"');
 		return $this->db->get('proses_penempatan')->result();
 	}

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | SIPKM </title>
+    <title>SIPKM | Login </title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,29 +42,43 @@
                             </div>
                             <br>
                             <h3 align="center">Sistem Informasi Penempatan Kerja
-                            Mahasiswa <br> Politeknik LP3I Jakarta <br> Kampus Depok</h3>
-                            <?php if( $this->session->flashdata('msg') ) : ?>
-                            <div class="row mt-3">
-                                <div class="col-md-12 col-lg-12">
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <!-- Data Administrator <strong>berhasil</strong> -->  <?php echo $this->session->flashdata('msg'); ?> 
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                                Mahasiswa <br> Politeknik LP3I Jakarta <br> Kampus Depok</h3>
 
-                            <?php endif; ?>
-                            <form method="post" action="<?php echo base_url('Login/auth') ?>">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="username" placeholder="username" required>
-                                    <i class="ik ik-user"></i>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
-                                    <i class="ik ik-lock"></i>
-                                </div>
+                                <?php if( $this->session->flashdata('pesan') ) : ?>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                Akun <strong>berhasil</strong>  <?php echo $this->session->flashdata('pesan'); ?> 
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+<!--                                 
+                                <?php if( $this->session->flashdata('msg') ) : ?>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                 <?php echo $this->session->flashdata('msg'); ?> 
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <?php endif; ?> -->
+                                <form method="post" action="<?php echo base_url('Login/auth') ?>">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="username" placeholder="username" required>
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="password" required>
+                                        <i class="fa fa-lock"></i>
+                                    </div>
                                <!--  <div class="row">
                                     <div class="col text-left">
                                         <label class="custom-control custom-checkbox">
@@ -80,9 +94,9 @@
                                     <button type="submit" class="btn btn-primary">Sign In</button>
                                 </div>
                             </form>
-                            <!-- <div class="register">
-                                <p>Don't have an account? <a href="register.html">Create an account</a></p>
-                            </div> -->
+                            <div class="register">
+                                <p>Belum punya akun? <a href="<?php echo base_url('Admin/register') ?>">Daftar sekarang</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,6 +110,6 @@
         <script src="<?php echo base_url('assets/login/') ?>plugins/screenfull/dist/screenfull.js"></script>
         <script src="<?php echo base_url('assets/login/') ?>dist/js/theme.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-       
+
     </body>
     </html>

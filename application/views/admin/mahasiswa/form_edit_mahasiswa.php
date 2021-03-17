@@ -28,7 +28,7 @@
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<div class="card-title">Form Mahasiswa</div>
+								<div class="card-title">Edit Data Mahasiswa</div>
 							</div>
 
 							<div class="card-body">
@@ -39,8 +39,19 @@
 											<label>NIM</label>
 											<input type="hidden" value="<?= $mhs->nim ?>" name="nim" class="form-control"  placeholder="Masukan NIM">
 											<input type="text" value="<?= $mhs->nim ?>" name="nim_update" class="form-control"  placeholder="Masukan NIM">
-
 										</div>
+										<div class="form-group">
+											<label>Jenis Kelamin</label>
+											<select class="form-control" name="jenis_kelamin">
+												<option value="Laki-Laki" <?php if($mhs->jenis_kelamin == "Laki-Laki"){ echo "selected";}  ?> >
+													Laki-Laki
+												</option>
+												<option value="Perempuan" <?php if($mhs->jenis_kelamin == "Perempuan"){ echo "selected";}  ?> >
+													Perempuan
+												</option>
+											</select>
+										</div>
+
 										<div class="form-group">
 											<label>Program Studi</label>
 											<select class="form-control" name="id_prodi">
@@ -62,6 +73,10 @@
 										<div class="form-group">
 											<label>Nama Mahasiswa</label>
 											<input type="text" value="<?= $mhs->nama_mahasiswa ?>" name="nama_mahasiswa" class="form-control" placeholder="Nama Mahasiswa">
+										</div>
+										<div class="form-group">
+											<label>Tanggal Lahir</label>
+											<input type="date" value="<?= $mhs->tgl_lahir ?>" name="tgl_lahir" class="form-control">
 										</div>
 										<div class="form-group">
 											<label>Email</label>
@@ -115,10 +130,10 @@
 									<div class="col-lg-3 col-md-3" style="padding-top: 20px;padding-left:25px;">
 										<?php if($mhs->foto != null) { ?>
 											<img style="height: auto;width: 100%;" class="card-img-top" src="<?php echo base_url('assets/upload/mahasiswa/') ?><?= $mhs->foto ?>"  alt="Card image cap">
-											<small align="center"><?= $mhs->foto ?></small>
+											<center><small align="center"><?= $mhs->foto ?></small></center>
 										<?php }else{ ?>
 											<img style="height: auto;width: 100%;" class="card-img-top" src="<?php echo base_url('assets/img/default.jpg') ?>"  alt="Card image cap">
-											<small>defaul.jpg</small>
+											<center><small>defaul.jpg</small></center>
 										<?php } ?>
 									</div>
 									<div class="col-lg-9 col-md-9">
@@ -126,6 +141,11 @@
 											<label>Foto</label>
 											<input type="hidden" class="form-control" value="<?= $mhs->foto ?>" name="old_image">
 											<input type="file" class="form-control" name="foto">
+										</div>
+										<div class="form-group">
+											<label>Curriculum Vitae</label>
+											<input type="hidden" class="form-control" value="<?= $mhs->cv ?>" name="old_cv">
+											<input type="file" class="form-control" name="cv">
 										</div>
 									</div>
 								</div>

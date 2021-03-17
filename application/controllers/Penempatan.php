@@ -1,4 +1,5 @@
 <?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Penempatan extends CI_Controller
 {
@@ -8,6 +9,7 @@ class Penempatan extends CI_Controller
 		parent:: __construct();
 		$this->load->model('Penempatan_model');
 		$this->load->model('Mahasiswa_model');
+		$this->load->model('User_model');
 
 	}
 
@@ -17,7 +19,7 @@ class Penempatan extends CI_Controller
 		$data['title'] = "SIPKM | Proses Penempatan ";
 		$level = $this->session->userdata('level');
 		$data['data'] = $this->Penempatan_model->get_proses_penempatan();
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/penempatan/v_proses_penempatan',$data);
@@ -32,7 +34,7 @@ class Penempatan extends CI_Controller
 		$data['title'] = "SIPKM | Progres Penempatan ";
 		$level = $this->session->userdata('level');
 		$data['data'] = $this->Penempatan_model->get_progres_penempatan();
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/penempatan/v_progres_penempatan',$data);
@@ -46,7 +48,7 @@ class Penempatan extends CI_Controller
 	public function formProsesPenempatan(){
 		$data['title'] = "SIPKM | Form Proses Penempatan ";
 		$level = $this->session->userdata('level');
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/penempatan/form_proses_penempatan');
@@ -61,7 +63,7 @@ class Penempatan extends CI_Controller
 		$data['title'] = "SIPKM | Edit Proses Penempatan ";
 		$data['data'] = $this->Penempatan_model->get_proses_penempatan_by_id($id);
 		$level = $this->session->userdata('level');
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/penempatan/edit_proses_penempatan');
@@ -74,7 +76,7 @@ class Penempatan extends CI_Controller
 
 	public function addProsesPenempatan(){
 		$level = $this->session->userdata('level');
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->Penempatan_model->add_proses_penempatan();
 			$this->session->set_flashdata('sukses','ditambahkan!');
 			redirect('Penempatan/prosesPenempatan');
@@ -87,7 +89,7 @@ class Penempatan extends CI_Controller
 
 	public function editProsesPenempatan($id){
 		$level = $this->session->userdata('level');
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->Penempatan_model->edit_proses_penempatan($id);
 			$this->session->set_flashdata('sukses','diubah!');
 			redirect('Penempatan/prosesPenempatan');
@@ -100,7 +102,7 @@ class Penempatan extends CI_Controller
 
 	public function deleteProsesPenempatan($id){
 		$level = $this->session->userdata('level');
-		if($level == 'ADM' || $level == 'KABIRO' || $level == 'STAF'){
+		if($level == 'ADM' || $level == 'KABID' || $level == 'STAF'){
 			$this->Penempatan_model->delete_proses_penempatan($id);
 			$this->session->set_flashdata('sukses','dihapus!');
 
@@ -143,6 +145,13 @@ class Penempatan extends CI_Controller
 					$arr_result[] = array(
 						'label'         => $row->nama_mahasiswa,
 						'nim'   => $row->nim,
+					);
+				echo json_encode($arr_result);
+			}elseif(count($result) < 0 ){
+				foreach ($result as $row)
+					$arr_result[] = array(
+						'label'         => 'data tidak ditemukan',
+						
 					);
 				echo json_encode($arr_result);
 			}
@@ -214,10 +223,11 @@ class Penempatan extends CI_Controller
     $excel->setActiveSheetIndex(0)->setCellValue('B3', "Nama Mahasiswa"); // Set kolom B3 dengan tulisan "NIS"
     $excel->setActiveSheetIndex(0)->setCellValue('C3', "Nama Perusahaan"); // Set kolom C3 dengan tulisan "NAMA"
     $excel->setActiveSheetIndex(0)->setCellValue('D3', "Tanggal Proses CV"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-    $excel->setActiveSheetIndex(0)->setCellValue('E3', "Posisi"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('F3', "Status"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('G3', "Keterangan"); // Set kolom E3 dengan tulisan "ALAMAT"
-
+    $excel->setActiveSheetIndex(0)->setCellValue('E3', "Tanggal Diterima"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('F3', "Posisi"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('G3', "Gaji"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('H3', "Status");
+    $excel->setActiveSheetIndex(0)->setCellValue('I3', "Keterangan");
 
 
 
@@ -229,6 +239,8 @@ class Penempatan extends CI_Controller
     $excel->getActiveSheet()->getStyle('E3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('F3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('G3')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('H3')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('I3')->applyFromArray($style_col);
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $progres = $this->Penempatan_model->export_progres();
@@ -238,10 +250,12 @@ class Penempatan extends CI_Controller
     	$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
     	$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nama_mahasiswa);
     	$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->nama_perusahaan);
-    	$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->tgl_proses);
-    	$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->posisi_dilamar);
-    	$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->status);
-    	$excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, ucfirst($data->keterangan));
+    	$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, date('d M Y', strtotime($data->tgl_proses)));
+    	$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, date('d M Y', strtotime($data->tgl_diterima)));
+    	$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->posisi_dilamar);
+    	$excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->gaji);
+    	$excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->status);
+    	$excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, ucfirst($data->keterangan));
 
       // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
     	$excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -251,20 +265,22 @@ class Penempatan extends CI_Controller
     	$excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
     	$excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
     	$excel->getActiveSheet()->getStyle('G'.$numrow)->applyFromArray($style_row);
-
+    	$excel->getActiveSheet()->getStyle('H'.$numrow)->applyFromArray($style_row);
+    	$excel->getActiveSheet()->getStyle('I'.$numrow)->applyFromArray($style_row);
 
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
   }
     // Set width kolom
     $excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
-    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(35); // Set width kolom B
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(45); // Set width kolom C
+    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
+    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
     $excel->getActiveSheet()->getColumnDimension('D')->setWidth(20); // Set width kolom D
-    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(30); // Set width kolom E
-    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
-    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
-
+    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(20); // Set width kolom E
+    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+    $excel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
+    $excel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
 
 
     // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)

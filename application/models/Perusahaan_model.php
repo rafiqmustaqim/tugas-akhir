@@ -38,9 +38,9 @@ class Perusahaan_model extends CI_Model{
 	}
 
 	public function get_proses_by_permintaan($id_perusahaan){
-		$array=array('fk_id_perusahaan'=>$id_perusahaan);
-		$this->db->join('mahasiswa','mahasiswa.nim = proses_penempatan.nim_mahasiswa');
-		$this->db->join('perusahaan','perusahaan.id_perusahaan = proses_penempatan.fk_id_perusahaan');
+		$array=array('fk_perusahaan'=>$id_perusahaan);
+		$this->db->join('mahasiswa','mahasiswa.nim = proses_penempatan.fk_nim');
+		$this->db->join('perusahaan','perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
 		$this->db->where('kategori = "permintaan" ');
 		$query = $this->db->get_where('proses_penempatan', $array);
 		$ret = $query->result();
@@ -66,9 +66,9 @@ class Perusahaan_model extends CI_Model{
 	}
 
 	public function get_proses_by_penawaran($id_perusahaan){
-		$array=array('fk_id_perusahaan'=>$id_perusahaan);
-		$this->db->join('mahasiswa','mahasiswa.nim = proses_penempatan.nim_mahasiswa');
-		$this->db->join('perusahaan','perusahaan.id_perusahaan = proses_penempatan.fk_id_perusahaan');
+		$array=array('fk_perusahaan'=>$id_perusahaan);
+		$this->db->join('mahasiswa','mahasiswa.nim = proses_penempatan.fk_nim');
+		$this->db->join('perusahaan','perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
 		$this->db->where('kategori = "permintaan" ');
 		$query = $this->db->get_where('proses_penempatan', $array);
 		$ret = $query->result();

@@ -39,13 +39,13 @@
 											<input type="hidden" name="id_proses" value="<?= $d->id_proses ?>" class="form-control">
 
 											<label>Nama Mahasiswa</label>
-											<input type="text" value="<?= $d->nama_mahasiswa ?>" required="true" name="nama_mahasiswa" class="form-control"  id="mahasiswa"  placeholder="Masukan NIM atau nama mahasiswa">	
+											<input type="text" value="<?= $d->nama_mahasiswa ?>" required="true" name="nama_mahasiswa" class="form-control"  id="maha"  placeholder="Masukan NIM atau nama mahasiswa">	
 										</div>
 									</div>
 									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>NIM</label>
-											<input type="text" name="nim" value="<?= $d->nim ?>" class="form-control" id="nim"  placeholder="NIM  mahasiswa" readonly="true">
+											<input type="text" name="nim" value="<?= $d->fk_nim ?>" class="form-control" id="nim"  placeholder="NIM  mahasiswa" readonly="true">
 										</div>
 									</div>
 									<div class="col-md-6 col-lg-6">
@@ -57,22 +57,22 @@
 									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>ID Perusahaan</label>
-											<input type="text" value="<?= $d->id_perusahaan ?>" name="id_perusahaan" class="form-control" id="nim"  placeholder="ID Perusahaan" readonly="true">
+											<input type="text" value="<?= $d->fk_perusahaan ?>" name="id_perusahaan" class="form-control" id="id_perusahaan"  placeholder="ID Perusahaan" readonly="true">
 										</div>
 									</div>
-									<div class="col-md-6 col-lg-3">
+									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>Posisi</label>
 											<input type="text" value="<?= $d->posisi_dilamar ?>" required="true" name="posisi_dilamar" class="form-control"  placeholder="Posisi yang dilamar">
 										</div>
 									</div>
-									<div class="col-md-6 col-lg-3">
+									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>Tanggal Proses</label>
 											<input type="date" value="<?= $d->tgl_proses ?>" required="true" name="tgl_proses" class="form-control">
 										</div>
 									</div>
-									<div class="col-md-6 col-lg-3">
+									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>Status</label>
 											<select class="form-control form-control-lg" name="status" required="true">
@@ -81,10 +81,10 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-md-6 col-lg-3">
+									<div class="col-md-6 col-lg-6">
 										<div class="form-group">
 											<label>Keterangan</label>
-											<select class="form-control form-control-lg" name="keterangan">
+											<select class="form-control form-control-lg" name="keterangan" id="ket">
 												<option value="Dalam Proses" <?php if($d->keterangan === 'Dalam Proses'){echo 'selected';} ?>>Dalam Proses</option>
 												<option value="Tidak Lolos CV" <?php if($d->keterangan === 'Tidak Lolos CV'){echo 'selected';} ?>>Tidak Lolos CV</option>
 												<option value="Tidak Lolos Interview" <?php if($d->keterangan === 'Tidak Lolos Interview'){echo 'selected';} ?>>Tidak Lolos Interview</option>
@@ -95,6 +95,31 @@
 											</select>	
 										</div>
 									</div>
+									<!-- <div class="col-md-6 col-lg-6">
+										<div class="form-group">
+											<label id="label" hidden>Tanggal Diterima</label>
+											<input type="date" value="<?= $d->tgl_diterima ?>" name="tgl_diterima" id="tgl" class="form-control" hidden />
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6">
+										<div class="form-group">
+											<label id="label2" hidden>Besaran Gaji</label>
+											<input type="text" value="<?= $d->gaji ?>" placeholder="ex : Rp. 5000.000" name="gaji" id="gaji" class="form-control" hidden />
+										</div>
+									</div> -->
+
+									<div class="col-md-6 col-lg-6">
+											<div class="form-group">
+												<label >Tanggal Diterima</label>
+												<input type="date" value="<?= $d->tgl_diterima ?>" name="tgl_diterima"  class="form-control"  />
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6">
+											<div class="form-group">
+												<label >Besaran Gaji</label>
+												<input type="text" value="<?= $d->gaji ?>" placeholder="ex : Rp. 5000.000" name="gaji"  class="form-control"  />
+											</div>
+										</div>
 
 								</div>
 							</div>
@@ -115,10 +140,15 @@
 
 <script src="<?php echo base_url() ?>/assets/js/jquery-3.3.1.js" type="text/javascript"></script>
 <!-- <script src="<?php echo base_url() ?>/assets/js/jquery-ui.js" type="text/javascript"></script>
---><script type="text/javascript">
+-->
+
+
+
+
+<script type="text/javascript">
 	$(document).ready(function(){
 
-		$('#mahasiswa').autocomplete({
+		$('#maha').autocomplete({
 			source: "<?php echo site_url('penempatan/get_mahasiswa');?>",
 
 			select: function (event, ui) {

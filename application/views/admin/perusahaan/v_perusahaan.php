@@ -73,7 +73,7 @@
               <div class="tab-content mt-2 mb-3" id="pills-tabContent">
 
                 <div class="tab-pane fade show active" id="permintaan" role="tabpanel" aria-labelledby="pills-home-tab">
-                  <table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+                  <table id="add-row" class="display table  table-hover table-head-bg-primary" >
                     <thead>
                       <tr align="center">
                         <th>No</th>
@@ -115,7 +115,7 @@
               </div>
 
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <table id="basic-datatables" class="display table table-striped table-hover table-head-bg-primary" >
+                <table id="basic-datatables" class="display table  table-hover table-head-bg-primary" >
                   <thead>
                     <tr align="center">
                       <th>No</th>

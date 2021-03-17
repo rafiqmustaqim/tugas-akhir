@@ -39,6 +39,13 @@
 
 									</div>
 									<div class="form-group">
+										<label>Jenis Kelamin</label>
+										<select class="form-control" name="jenis_kelamin">	
+											<option value="Laki-Laki">Laki-Laki</option>
+											<option value="Perempuan">Perempuan</option>
+										</select>
+									</div>
+									<div class="form-group">
 										<label>Program Studi</label>
 										<select class="form-control" name="id_prodi">
 											<?php 
@@ -56,6 +63,10 @@
 									<div class="form-group">
 										<label>Nama Mahasiswa</label>
 										<input type="text" name="nama_mahasiswa" class="form-control" placeholder="Nama Mahasiswa">
+									</div>
+									<div class="form-group">
+										<label>Tanggal Lahir</label>
+										<input type="date" name="tgl_lahir" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Email</label>
@@ -93,22 +104,28 @@
 										<textarea class="form-control" name="minat"></textarea>
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-4">
+								<div class="col-lg-6 col-md-6">
 									<div class="form-group">
 										<label>No. Telpon</label>
 										<input type="text" name="telepon" class="form-control">
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-4">
+								<div class="col-lg-6 col-md-6">
 									<div class="form-group">
 										<label>No. Telpon Orang Tua</label>
 										<input type="text" class="form-control" name="telepon_orangtua">
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-4">
+								<div class="col-lg-6 col-md-6">
 									<div class="form-group">
 										<label>Foto</label>
 										<input type="file" class="form-control" name="foto">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="form-group">
+										<label>Curriculum Vitae</label>
+										<input type="file" class="form-control" name="cv">
 									</div>
 								</div>
 							</div>

@@ -35,7 +35,7 @@
 								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
 										<label>Nama Mahasiswa</label>
-										<input type="text" required="true" name="nama_mahasiswa" class="form-control"  id="mahasiswa"  placeholder="Masukan NIM atau nama mahasiswa">
+										<input type="text" required="true" name="nama_mahasiswa" class="form-control"  id="maha"  placeholder="Masukan NIM atau nama mahasiswa">
 									</div>
 								</div>
 								<!-- <div class="col-md-6 col-lg-6">
@@ -56,19 +56,19 @@
 										<input type="hidden" name="id_perusahaan" class="form-control" id="perusahaan"  placeholder="ID Perusahaan" readonly="true">
 								<!-- 	</div>
 								</div> -->
-								<div class="col-md-6 col-lg-3">
+								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
 										<label>Posisi</label>
 										<input type="text" required="true" name="posisi_dilamar" class="form-control"  placeholder="Posisi yang dilamar">
 									</div>
 								</div>
-								<div class="col-md-6 col-lg-3">
+								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
 										<label>Tanggal Proses</label>
 										<input type="date" required="true" name="tgl_proses" class="form-control">
 									</div>
 								</div>
-								<div class="col-md-6 col-lg-3">
+								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
 										<label>Status</label>
 										<select class="form-control form-control-lg" name="status" required="true">
@@ -77,10 +77,10 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-6 col-lg-3">
+								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
 										<label>Keterangan</label>
-										<select class="form-control form-control-lg" name="keterangan">
+										<select class="form-control form-control-lg" name="keterangan" id="ket">
 											<option value="Dalam Proses">Dalam Proses</option>
 											<option value="Tidak Lolos CV">Tidak Lolos CV</option>
 											<option value="Tidak Lolos Interview">Tidak Lolos Interview</option>
@@ -91,7 +91,18 @@
 										</select>	
 									</div>
 								</div>
-
+								<div class="col-md-6 col-lg-6">
+									<div class="form-group">
+										<label id="label" hidden>Tanggal Diterima</label>
+										<input type="date" name="tgl_diterima" id="tgl" class="form-control" hidden />
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+									<div class="form-group">
+										<label id="label2" hidden>Besaran Gaji</label>
+										<input type="text" placeholder="ex : Rp. 5000.000" name="gaji" id="gaji" class="form-control" hidden />
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="card-action">
@@ -111,7 +122,7 @@
 --><script type="text/javascript">
 	$(document).ready(function(){
 
-		$('#mahasiswa').autocomplete({
+		$('#maha').autocomplete({
 			source: "<?php echo site_url('penempatan/get_mahasiswa');?>",
 
 			select: function (event, ui) {

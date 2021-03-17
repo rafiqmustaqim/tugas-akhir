@@ -45,13 +45,15 @@
 
 
 							<div class="table-responsive">
-								<table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+								<table id="add-row" class="display table table-hover table-head-bg-primary" >
 									<thead>
-										<tr align="center">	
-											<th>No</th>
+										<tr>	
+											<th style="width: 5%;">No</th>
 											<th>Perusahaan</th>
-											<th width="200">Nama Mahasiswa</th>
+											<th width="160">Nama Mahasiswa</th>
 											<th>Posisi</th>
+											<th>Tanggal Diterima</th>
+											<th>Gaji</th>
 											<th>Status</th>
 											<th>Keterangan</th>
 										</tr>
@@ -59,11 +61,13 @@
 
 									<tbody>
 										<?php  $no =1; foreach($data as $p ):  ?>
-										<tr align="center">
+										<tr>
 											<td><?php echo $no++; ?></td>
 											<td><?= $p['nama_perusahaan']; ?></td>
 											<td><?= $p['nama_mahasiswa']; ?></td>
 											<td><?= $p['posisi_dilamar']; ?></td>
+											<td><?php echo date('d M Y', strtotime($p['tgl_diterima'])); ?></td>
+											<td><?= $p['gaji']; ?></td>
 											<td><?= $p['status']; ?></td>
 											<td>
 												<div class="badge badge-success">

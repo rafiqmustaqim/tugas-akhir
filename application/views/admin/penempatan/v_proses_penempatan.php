@@ -66,7 +66,7 @@
 
 
 								<div class="table-responsive">
-									<table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+									<table id="add-row" class="display table table-hover table-head-bg-primary" >
 										<thead>
 											<tr align="center">	
 												<th>No</th>
@@ -74,7 +74,7 @@
 												<th width="200">Mahasiswa Yang Dikirim</th>
 												<th>Tanggal Proses</th>
 												<th>Posisi</th>
-												<th>Status</th>
+												<th>Keterangan</th>
 <!-- 												<th>Keterangan</th>
  -->												<th style="width: 10%">Action</th>
 											</tr>
@@ -86,9 +86,9 @@
 												<td><?php echo $no++; ?></td>
 												<td><?= $p['nama_perusahaan']; ?></td>
 												<td><?= $p['nama_mahasiswa']; ?></td>
-												<td><?= $p['tgl_proses']; ?></td>
+												<td><?php echo date('d-m-Y', strtotime($p['tgl_proses'])); ?></td>
 												<td><?= $p['posisi_dilamar']; ?></td>
-												<td><?= $p['status']; ?></td>
+												<td><?= $p['keterangan']; ?></td>
 												<td>
 													<div class="form-button-action">
 														<a title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit" href="<?php echo base_url('penempatan/formEditProsesPenempatan/') ?><?= $p['id_proses']; ?>">

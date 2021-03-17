@@ -18,10 +18,11 @@
             }
         });
     </script>
+    
 
     <!-- Memanggil file .js untuk proses autocomplete -->
-<!--     <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery-1.8.2.min.js'></script>
- -->    <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery.autocomplete.js'></script>
+    <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery.autocomplete.js'></script>
 
     <!-- Memanggil file .css untuk style saat data dicari dalam filed -->
     <link href='<?php echo base_url();?>assets/js/jquery.autocomplete.css' rel='stylesheet' />
@@ -35,7 +36,48 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/demo.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/jquery-ui.css">
 
- <!-- Memanggil file .css untuk style saat data dicari dalam filed -->
+    <!-- show selected -->
+
+    <script type='text/javascript'>
+        $(window).load(function(){
+            $("#ket").change(function() {
+                console.log($("#ket option:selected").val());
+                if ($("#ket option:selected").val() !== 'Diterima') {
+                    $('#tgl').prop('hidden', true);
+                    $('#label').prop('hidden', true);
+                    $('#gaji').prop('hidden', true);
+                    $('#label2').prop('hidden', true);
+                }else if( $('#ket option:selected').val() != null){
+                   $('#tgl').prop('hidden', false);
+                   $('#label').prop('hidden', false);
+                   $('#gaji').prop('hidden', false);
+                   $('#label2').prop('hidden', false);
+               } else {
+                $('#tgl').prop('hidden', false);
+                $('#label').prop('hidden', false);
+                $('#gaji').prop('hidden', false);
+                $('#label2').prop('hidden', false);
+
+            }
+        });
+        });
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $('#maha').autocomplete({
+          source: "<?php echo site_url('penempatan/get_mahasiswa');?>",
+
+          select: function (event, ui) {
+            $('[name="nama_mahasiswa"]').val(ui.item.nama_mahasiswa); 
+            $('[name="nim"]').val(ui.item.nim); 
+        }
+    });
+
+    });
+</script>
+
 
 </head>
 <body>
@@ -78,7 +120,7 @@
                             </div>
                         </form> -->
 
-                        <h4 style="color:white;"> <i class="fa fa-briefcase"></i> Sistem Informasi Penempatan Kerja Mahasiswa</h4>
+                        <!--  <h4 style="color:white;"> <i class="fa fa-briefcase"></i> Sistem Informasi Penempatan Kerja Mahasiswa</h4> -->
                     </div>
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item toggle-nav-search hidden-caret">
@@ -86,9 +128,9 @@
                                 <i class="fa fa-search"></i>
                             </a>
                         </li>
-                       
-                           
-                        <li class="nav-item dropdown hidden-caret">
+
+
+                       <!--  <li class="nav-item dropdown hidden-caret">
                             <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
                                 <span class="notification">4</span>
@@ -143,15 +185,15 @@
                                     <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown hidden-caret">
                             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <i class="fas fa-layer-group"></i>
                             </a>
                             <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                 <div class="quick-actions-header">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
+                                    <span class="title mb-1">Aksi Cepat</span>
+                                    <span class="subtitle op-8">Pintasan</span>
                                 </div>
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
@@ -168,51 +210,68 @@
                                                     <span class="text">Form Perusahaan</span>
                                                 </div>
                                             </a>
-                                            <a class="col-6 col-md-4 p-0" href="<?php echo base_url('Penempatan/formProsesPenempatan') ?>">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-file"></i>
-                                                    <span class="text">Form  Penempatan</span>
-                                                </div>
-                                            </a>
+                                            <a class="col-6 col-md-4 p-0" href="<?php echo base_url('Penempatan/formProsesPenempatan
+                                            ') ?>">
+                                            <div class="quick-actions-item">
+                                                <i class="flaticon-file"></i>
+                                                <span class="text">Form  Penempatan</span>
+                                            </div>
+                                        </a>
                                         
-                                           
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <div class="avatar-sm">
-                                    <img src="<?php echo base_url() ?>assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user animated fadeIn">
-                                <div class="dropdown-user-scroll scrollbar-outer">
-                                    <li>
-                                        <div class="user-box">
-                                            <div class="avatar-lg"><img src="<?php echo base_url() ?>assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
-                                            <div class="u-text">
-                                                <h4>Hizrian</h4>
-                                                <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">My Profile</a>
-                                        <a class="dropdown-item" href="#">My Balance</a>
-                                        <a class="dropdown-item" href="#">Inbox</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Account Setting</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?php  echo base_url('login/logout')   ?>">Logout</a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                    </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <div class="avatar-sm">
+                               <?php  $data = $this->User_model->get_profil_akun();
+                               foreach($data as $user) :
+                                 ?>
+
+                                 <?php if($user->foto != null) { ?>
+                                   <img src="<?php echo base_url('assets/upload/foto-profil/').$this->session->userdata('username')?>.jpg" alt="..." class="avatar-img rounded-circle">
+                               <?php }else{ ?>
+                                 <img src="<?php echo base_url('assets/img/')?>default.jpg" alt="..." class="avatar-img rounded-circle">
+                             <?php } ?>
+                         <?php endforeach; ?>
+                     </div>
+                 </a>
+                 <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                        <li>
+                         <div class="user-box">
+                            <div class="avatar-lg">
+                             <?php  $data = $this->User_model->get_profil_akun();
+                             foreach($data as $user) : ?>
+                               <?php if($user->foto != null) { ?>
+                                <img src="<?php echo base_url('assets/upload/foto-profil/').$this->session->userdata('username')?>.jpg" alt="image profile" class="avatar-img rounded"></div>
+                            <?php }else{ ?>
+                              <img src="<?php echo base_url('assets/img/')?>default.jpg" alt="image profile" class="avatar-img rounded">
+                          </div>
+                      <?php } ?>
+                  <?php endforeach; ?>
+                  <div class="u-text">
+                    <h4><?php echo $this->session->userdata('nama_lengkap'); ?></h4>
+                    <p class="text-muted"><?php echo $this->session->userdata('email'); ?></p>
                 </div>
-            </nav>
-            <!-- End Navbar -->
+
+            </li>
+            <li>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url('admin/getProfilAkun') ?>">Profil Saya</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url('admin/settingAkun') ?>">Pengaturan Akun</a>               
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php  echo base_url('login/logout')   ?>">Logout</a>
+            </li>
         </div>
+    </ul>
+</li>
+</ul>
+</div>
+</nav>
+<!-- End Navbar -->
+</div>

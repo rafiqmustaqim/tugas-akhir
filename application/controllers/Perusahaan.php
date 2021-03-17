@@ -1,5 +1,5 @@
 <?php 
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Perusahaan extends CI_Controller{
 
@@ -7,6 +7,8 @@ Class Perusahaan extends CI_Controller{
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('Perusahaan_model');
+		$this->load->model('User_model');
+
 
 	}
 
@@ -16,7 +18,7 @@ Class Perusahaan extends CI_Controller{
 		$data['permintaan'] = $this->Perusahaan_model->get_permintaan_perusahaan();
 		$data['penawaran'] = $this->Perusahaan_model->get_penawaran_perusahaan();
 
-		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/v_perusahaan',$data);
@@ -33,7 +35,7 @@ Class Perusahaan extends CI_Controller{
 		$data['title'] = "SIPKM | Permintaan Perusahaan ";
 		$level = $this->session->userdata('level');
 		$data['data'] = $this->Perusahaan_model->get_permintaan_perusahaan();
-		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/v_permintaan',$data);
@@ -50,7 +52,7 @@ Class Perusahaan extends CI_Controller{
 		$data['permintaan'] = $this->Perusahaan_model->get_detail_permintaan($id_perusahaan);
 		$data['proses_penempatan'] = $this->Perusahaan_model->get_proses_by_permintaan($id_perusahaan);
 
-		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/v_detail_permintaan',$data);
@@ -66,7 +68,7 @@ Class Perusahaan extends CI_Controller{
 		$data['title'] = "SIPKM | Penawaran Perusahaan ";
 		$level = $this->session->userdata('level');
 		$data['data'] = $this->Perusahaan_model->get_penawaran_perusahaan();
-		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/v_penawaran',$data);
@@ -83,7 +85,7 @@ Class Perusahaan extends CI_Controller{
 		$data['penawaran'] = $this->Perusahaan_model->get_penawaran_perusahaan_by_id($id_perusahaan);
 		$data['proses_penempatan'] = $this->Perusahaan_model->get_proses_by_penawaran($id_perusahaan);
 
-		if($level === 'ADM' || $level === 'KABIRO' || $level === 'STAF'){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/v_detail_penawaran',$data);
@@ -97,8 +99,9 @@ Class Perusahaan extends CI_Controller{
 
 
 	public function formTambah(){
+		$level = $this->session->userdata('level');
 		$data['title'] = "SIPKM | Tambah Data Perusahaan ";
-		if($this->session->userdata('level') === 'ADM' || $this->session->userdata('level') === 'KABIRO' || $this->session->userdata('level') === 'STAF'  ){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/form_tambah_perusahaan');
@@ -111,9 +114,10 @@ Class Perusahaan extends CI_Controller{
 
 
 	public function formEdit($id_perusahaan){
+		$level = $this->session->userdata('level');
 		$data['title'] = "SIPKM | Edit Data Perusahaan ";
 		$data['data'] = $this->Perusahaan_model->get_perusahaan_by_id($id_perusahaan);
-		if($this->session->userdata('level') === 'ADM' || $this->session->userdata('level') === 'KABIRO' || $this->session->userdata('level') === 'STAF'  ){
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('admin/Perusahaan/form_edit_perusahaan',$data);
@@ -127,7 +131,8 @@ Class Perusahaan extends CI_Controller{
 
 
 	public function addPerusahaan(){
-		if($this->session->userdata('level') === "ADM" || $this->session->userdata('level') === 'KABIRO' || $this->session->userdata('level') === 'STAF'){
+		$level = $this->session->userdata('level');
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->Perusahaan_model->add_perusahaan();
 			$this->session->set_flashdata('msg','ditambahkan!');
 			redirect('Perusahaan/getPerusahaan');
@@ -138,7 +143,8 @@ Class Perusahaan extends CI_Controller{
 	}
 
 	public function editPerusahaan($id_perusahaan){
-		if($this->session->userdata('level') === "ADM" || $this->session->userdata('level') === 'KABIRO' || $this->session->userdata('level') === 'STAF'){
+		$level = $this->session->userdata('level');
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->Perusahaan_model->edit_perusahaan($id_perusahaan);
 			$this->session->set_flashdata('msg','diubah!');
 
@@ -150,7 +156,8 @@ Class Perusahaan extends CI_Controller{
 	}
 
 	public function deletePerusahaan($id_perusahaan){
-		if($this->session->userdata('level') === "ADM" || $this->session->userdata('level') === 'KABIRO' || $this->session->userdata('level') === 'STAF'){
+		$level = $this->session->userdata('level');
+		if($level === 'ADM' || $level === 'KABID' || $level === 'STAF'){
 			$this->Perusahaan_model->delete_perusahaan($id_perusahaan);
 			$this->session->set_flashdata('msg','dihapus!');
 
