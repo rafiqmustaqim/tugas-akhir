@@ -69,7 +69,7 @@ class Perusahaan_model extends CI_Model{
 		$array=array('fk_perusahaan'=>$id_perusahaan);
 		$this->db->join('mahasiswa','mahasiswa.nim = proses_penempatan.fk_nim');
 		$this->db->join('perusahaan','perusahaan.id_perusahaan = proses_penempatan.fk_perusahaan');
-		$this->db->where('kategori = "permintaan" ');
+		$this->db->where('kategori = "penawaran" ');
 		$query = $this->db->get_where('proses_penempatan', $array);
 		$ret = $query->result();
 		return $ret;
